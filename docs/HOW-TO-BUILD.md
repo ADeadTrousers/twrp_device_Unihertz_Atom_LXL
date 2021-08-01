@@ -198,13 +198,13 @@ Prepare the build
 cd ~/android/twrp
 source build/envsetup.sh
 # For the Atom L EEA use
-lunch omni_Atom_L_EEA
+lunch omni_Atom_L_EEA-eng
 # For the Atom XL EEA use
-lunch omni_Atom_XL_EEA
+lunch omni_Atom_XL_EEA-eng
 # For the Atom L TEE use
-lunch omni_Atom_L_TEE
+lunch omni_Atom_L_TEE-eng
 # For the Atom XL TEE use
-lunch omni_Atom_XL_TEE
+lunch omni_Atom_XL_TEE-eng
 ```
 	
 Do the actual build
