@@ -123,7 +123,7 @@ Create the project folder and download the source code
 ```bash
 mkdir -p ~/android/twrp
 cd ~/android/twrp
-repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated
 ```
 	
 Now let's add this very device repo to the local_manifest
