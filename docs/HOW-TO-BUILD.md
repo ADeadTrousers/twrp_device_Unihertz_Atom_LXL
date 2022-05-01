@@ -123,7 +123,7 @@ Create the project folder and download the source code
 ```bash
 mkdir -p ~/android/twrp
 cd ~/android/twrp
-repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
 ```
 	
 Now let's add this very device repo to the local_manifest
@@ -137,6 +137,7 @@ Add the following
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+  <project name="LineageOS/android_tools_extract-utils" path="tools/extract-utils" remote="github" revision="lineage-18.1"/>
   <project name="ADeadTrousers/twrp_device_Unihertz_Atom_LXL" path="device/Unihertz/Atom_LXL" remote="github" revision="master" />
   <!-- For the Atom L region eea add -->  
   <project name="ADeadTrousers/twrp_device_Unihertz_Atom_L_EEA" path="device/Unihertz/Atom_L_EEA" remote="github" revision="master" />
@@ -198,13 +199,13 @@ Prepare the build
 cd ~/android/twrp
 source build/envsetup.sh
 # For the Atom L EEA use
-lunch omni_Atom_L_EEA-eng
+lunch twrp_Atom_L_EEA-eng
 # For the Atom XL EEA use
-lunch omni_Atom_XL_EEA-eng
+lunch twrp_Atom_XL_EEA-eng
 # For the Atom L TEE use
-lunch omni_Atom_L_TEE-eng
+lunch twrp_Atom_L_TEE-eng
 # For the Atom XL TEE use
-lunch omni_Atom_XL_TEE-eng
+lunch twrp_Atom_XL_TEE-eng
 ```
 	
 Do the actual build
