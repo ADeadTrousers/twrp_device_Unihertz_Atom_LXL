@@ -138,15 +138,15 @@ Add the following
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <project name="LineageOS/android_tools_extract-utils" path="tools/extract-utils" remote="github" revision="lineage-18.1"/>
-  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_LXL" path="device/Unihertz/Atom_LXL" remote="github" revision="master" />
+  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_LXL" path="device/Unihertz/Atom_LXL" remote="github" revision="twrp-11.0" />
   <!-- For the Atom L region eea add -->  
-  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_L_EEA" path="device/Unihertz/Atom_L_EEA" remote="github" revision="master" />
+  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_L_EEA" path="device/Unihertz/Atom_L_EEA" remote="github" revision="twrp-11.0" />
   <!-- For the Atom XL region eea add -->  
-  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_XL_EEA" path="device/Unihertz/Atom_XL_EEA" remote="github" revision="master" />
+  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_XL_EEA" path="device/Unihertz/Atom_XL_EEA" remote="github" revision="twrp-11.0" />
   <!-- For the Atom L region tee add -->  
-  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_L_TEE" path="device/Unihertz/Atom_L_TEE" remote="github" revision="master" />
+  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_L_TEE" path="device/Unihertz/Atom_L_TEE" remote="github" revision="twrp-11.0" />
   <!-- For the Atom XL region tee add -->  
-  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_XL_TEE" path="device/Unihertz/Atom_XL_TEE" remote="github" revision="master" />
+  <project name="ADeadTrousers/twrp_device_Unihertz_Atom_XL_TEE" path="device/Unihertz/Atom_XL_TEE" remote="github" revision="twrp-11.0" />
 </manifest>
 ```
 
