@@ -11,25 +11,25 @@
 /dev/block/sdc                                   0660    root    system
 
 # eMMC/UFS common
-/dev/block/platform/bootdevice/by-name/misc2     0660    root    system
-/dev/block/platform/bootdevice/by-name/boot      0640    root    system
-/dev/block/platform/bootdevice/by-name/recovery  0640    root    system
-/dev/block/platform/bootdevice/by-name/secro     0640    root    system
-/dev/block/platform/bootdevice/by-name/seccfg    0660    root    system
-/dev/block/platform/bootdevice/by-name/proinfo   0660    root    system
-/dev/block/platform/bootdevice/by-name/nvram     0660    root    system
-/dev/block/platform/bootdevice/by-name/para      0660    root    system
-/dev/block/platform/bootdevice/by-name/logo      0660    root    system
-/dev/block/platform/bootdevice/by-name/frp       0660    root    system
-/dev/block/platform/bootdevice/by-name/md1img    0640    root    system
-/dev/block/platform/bootdevice/by-name/md1img_a  0640    root    system
-/dev/block/platform/bootdevice/by-name/md1img_b  0640    root    system
-/dev/block/platform/bootdevice/by-name/md1dsp    0660    root    system
-/dev/block/platform/bootdevice/by-name/boot_para 0640    root    system
+/dev/block/by-name/misc2     0660    root    system
+/dev/block/by-name/boot      0640    root    system
+/dev/block/by-name/recovery  0640    root    system
+/dev/block/by-name/secro     0640    root    system
+/dev/block/by-name/seccfg    0660    root    system
+/dev/block/by-name/proinfo   0660    root    system
+/dev/block/by-name/nvram     0660    root    system
+/dev/block/by-name/para      0660    root    system
+/dev/block/by-name/logo      0660    root    system
+/dev/block/by-name/frp       0660    root    system
+/dev/block/by-name/md1img    0640    root    system
+/dev/block/by-name/md1img_a  0640    root    system
+/dev/block/by-name/md1img_b  0640    root    system
+/dev/block/by-name/md1dsp    0660    root    system
+/dev/block/by-name/boot_para 0640    root    system
 
 # OTP
 /dev/otp                  0660   system     system
-/dev/block/platform/bootdevice/by-name/otp       0660    root    system
+/dev/block/by-name/otp       0660    root    system
 
 # Connectivity
 /dev/stpwmt               0660   system     system
@@ -52,9 +52,9 @@
 /dev/fm                   0660   media     media
 
 # NFC
-/dev/msr3110              0666   root       root
-/dev/mt6605               0660   nfc        radio
 /dev/st21nfc              0660   nfc        radio
+/dev/st54spi              0660   secure_element        secure_element
+
 #[AGUI][Fengjun][2020.06.01]For sony feilika NFC
 /dev/cxd224x-i2c 		  0660 	 nfc 		nfc
 
@@ -145,5 +145,8 @@
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
 
-#TrustKernel TEE
-/dev/tkcoredrv            0666   root       root
+#[AGUI][Fengjun][2020.11.26]For trustkernel tee
+/dev/tkcoredrv            0666   root       system
+/dev/mmcblk0rpmb          0660   root       system
+/dev/rpmb0                0660   root       system
+#[AGUI]End

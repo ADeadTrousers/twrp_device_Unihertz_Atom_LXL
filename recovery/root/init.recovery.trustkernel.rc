@@ -6,12 +6,12 @@ on init
     mkdir /mnt/vendor/persist 0755 root root
     mkdir /mnt/vendor/nvdata 0771 root root
     mkdir /mnt/vendor/nvcfg 0771 root root
-    mount ext4 /dev/block/platform/bootdevice/by-name/apd /mnt/vendor/apd rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/protect1 /mnt/vendor/protect_f rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/protect2 /mnt/vendor/protect_s rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/nvdata /mnt/vendor/nvdata rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/nvcfg /mnt/vendor/nvcfg rw wait
+    mount ext4 /dev/block/by-name/apd /mnt/vendor/apd rw wait
+    mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
+    mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
+    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw wait
+    mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
+    mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
     
 service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
     user root
