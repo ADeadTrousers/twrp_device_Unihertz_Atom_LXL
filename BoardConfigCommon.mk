@@ -108,14 +108,14 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 #TW_INCLUDE_FBE := true
 #TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
-TARGET_RECOVERY_DEVICE_MODULES += android.hardware.gatekeeper@1.0.so
-TARGET_RECOVERY_DEVICE_MODULES += libgatekeeper.so
-TARGET_RECOVERY_DEVICE_MODULES += android.hardware.keymaster@4.0.so
-TARGET_RECOVERY_DEVICE_MODULES += android.hardware.keymaster@3.0.so
-TARGET_RECOVERY_DEVICE_MODULES += libkeymaster_messages.so
-TARGET_RECOVERY_DEVICE_MODULES += libkeymaster_portable.so
-TARGET_RECOVERY_DEVICE_MODULES += libpuresoftkeymasterdevice.so
-TARGET_RECOVERY_DEVICE_MODULES += libsoft_attestation_cert.so
+TARGET_RECOVERY_DEVICE_MODULES += android.hardware.gatekeeper@1.0
+TARGET_RECOVERY_DEVICE_MODULES += libgatekeeper
+TARGET_RECOVERY_DEVICE_MODULES += android.hardware.keymaster@4.0
+TARGET_RECOVERY_DEVICE_MODULES += android.hardware.keymaster@3.0
+TARGET_RECOVERY_DEVICE_MODULES += libkeymaster_messages
+TARGET_RECOVERY_DEVICE_MODULES += libkeymaster_portable
+TARGET_RECOVERY_DEVICE_MODULES += libpuresoftkeymasterdevice
+TARGET_RECOVERY_DEVICE_MODULES += libsoft_attestation_cert
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.gatekeeper@1.0.so
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so

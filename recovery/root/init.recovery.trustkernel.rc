@@ -21,4 +21,17 @@ service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
     seclabel u:r:recovery:s0    
     
 on early-fs
+    start vold
     start trustkernel.twrp
+
+on post-fs
+    #restorecon_recursive /metadata
+    mkdir /metadata/vold
+    chmod 0700 /metadata/vold
+    mkdir /metadata/password_slots 0771 root system
+    mkdir /metadata/bootstat 0750 system log
+    mkdir /metadata/ota 0700 root system
+    mkdir /metadata/ota/snapshots 0700 root system
+
+    mkdir /metadata/apex 0700 root system
+    mkdir /metadata/apex/sessions 0700 root system
