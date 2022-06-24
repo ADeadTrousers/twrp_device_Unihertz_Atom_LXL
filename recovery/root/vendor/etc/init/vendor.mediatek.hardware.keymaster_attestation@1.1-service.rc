@@ -2,6 +2,6 @@ service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymas
     interface vendor.mediatek.hardware.keymaster_attestation@1.0::IKeymasterDevice default
     interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
     user root
-    group root
+    group system
     disabled
     seclabel u:r:recovery:s0

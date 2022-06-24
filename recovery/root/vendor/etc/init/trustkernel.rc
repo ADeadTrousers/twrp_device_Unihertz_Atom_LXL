@@ -7,7 +7,7 @@ on post-fs
 	# restorecon /mnt/vendor/persist/t6_twrp
 
 	# restorecon /mnt/vendor/protect_f
-	mkdir /mnt/vendor/protect_f/tee
+	mkdir /mnt/vendor/protect_f/tee_twrp
 	# chown system system /mnt/vendor/protect_f/tee
 	# restorecon /mnt/vendor/protect_f/tee
 
@@ -61,17 +61,17 @@ service teed /vendor/bin/teed \
     --rpmbdev /dev/mmcblk0rpmb \
     --rpmbdev /dev/rpmb0 \
     --prot /mnt/vendor/persist/t6_twrp \
-    --prot /mnt/vendor/protect_f/tee \
+    --prot /mnt/vendor/protect_f/tee_twrp \
     --logpath /data/vendor/t6/tkcore.log \
     --proprefix vendor.trustkernel
 	user root
-	group root
+	group system
 	disabled
 	seclabel u:r:recovery:s0
 
 service tee_check_keybox /vendor/bin/tee_check_keybox
 	user root
-	group root
+	group system
 	disabled
 	oneshot
 	seclabel u:r:recovery:s0

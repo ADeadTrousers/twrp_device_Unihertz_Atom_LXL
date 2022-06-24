@@ -1,6 +1,6 @@
 service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
-    group root
+    group system
     disabled
     seclabel u:r:recovery:s0
