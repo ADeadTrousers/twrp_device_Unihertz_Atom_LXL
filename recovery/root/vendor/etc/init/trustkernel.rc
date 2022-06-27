@@ -11,8 +11,6 @@ on post-fs
 	# chown system system /mnt/vendor/protect_f/tee
 	# restorecon /mnt/vendor/protect_f/tee
 
-	start teed
-
 on property:vendor.trustkernel.fs.state=prepare
 	write /proc/bootprof "tkcore: prepare basic"
 	mkdir /data/vendor/t6

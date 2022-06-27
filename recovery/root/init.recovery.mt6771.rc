@@ -4,13 +4,6 @@ import /vendor/etc/init/android.hardware.gatekeeper@1.0-service.rc
 import /vendor/etc/init/android.hardware.keymaster@4.0-service.trustkernel.rc
 import /vendor/etc/init/vendor.mediatek.hardware.keymaster_attestation@1.1-service.rc
 
-service hwservicemanager /system/bin/hwservicemanager
-    user root
-    group root readproc
-    disabled
-    onrestart setprop hwservicemanager.ready false
-    seclabel u:r:recovery:s0
-
 service servicemanager /system/bin/servicemanager
     user root
     group root readproc
@@ -33,7 +26,6 @@ service keystore_auth /system/bin/keystore_auth
 on fs
     install_keyring
     setprop crypto.ready 1
-    start hwservicemanager
     start servicemanager
         
 on post-fs
@@ -50,6 +42,7 @@ on post-fs
     symlink /dev/block/by-name/preloader_b /dev/block/by-name/preloader_ufs_b
    
 on property:hwservicemanager.ready=true
+    start teed
     start vendor.keymaster-4-0-trustkernel
     start vendor.gatekeeper-1-0
     #start keymaster_attestation-1-1
@@ -59,16 +52,22 @@ on property:ro.crypto.state=unsupported
     stop vendor.keymaster-4-0-trustkernel
     stop vendor.gatekeeper-1-0
     #stop keymaster_attestation-1-1
+    stop servicemanager
+    stop hwservicemanager    
 
 on property:ro.crypto.state=unencrypted
     stop teed
     stop vendor.keymaster-4-0-trustkernel
     stop vendor.gatekeeper-1-0
     #stop keymaster_attestation-1-1
+    stop servicemanager
+    stop hwservicemanager
 
-on property:twrp.decrypt.done=true
+on property:twrp.decrypt.done=true && property:twrp.all.users.decrypted=true
     stop teed
     stop vendor.keymaster-4-0-trustkernel
     stop vendor.gatekeeper-1-0
     #stop keymaster_attestation-1-1
+    stop servicemanager
+    stop hwservicemanager
         

@@ -12,6 +12,14 @@ on init
     mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw wait
     mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
     mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
+    start erase_para
+    
+service erase_para /system/bin/dd if=/dev/zero of=/dev/block/by-name/para
+    user root
+    group root
+    disabled
+    oneshot    
+    seclabel u:r:recovery:s0
     
 service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
     user root
@@ -21,7 +29,6 @@ service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
     seclabel u:r:recovery:s0    
     
 on early-fs
-    start vold
     start trustkernel.twrp
 
 on post-fs
