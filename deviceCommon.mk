@@ -11,7 +11,3 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Another common config inclusion
 #$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
-
-# Files under $(LOCAL_PATH)/recovery/root/ get automatically copied into recovery
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/Unihertz/Atom_LXL/recovery/root,recovery/root)

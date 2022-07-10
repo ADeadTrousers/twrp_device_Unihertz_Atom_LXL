@@ -1,7 +1,7 @@
 # mount point           fstype  device                  device2                         flags
 
 # Dynamic partition
-/system_root		 ext4    /dev/block/mapper/system                                flags=backup=0;display="System"
+/system_root            ext4    /dev/block/mapper/system                                flags=backup=0;display="System"
 /system_image           emmc    /dev/block/mapper/system                                flags=backup=1;display="System Image"
 /vendor                 ext4    /dev/block/mapper/vendor                                flags=backup=0;display="Vendor"
 /vendor_image           emmc    /dev/block/mapper/vendor                                flags=backup=1;display="Vendor Image"
@@ -56,7 +56,7 @@
 /gz2                    emmc    /dev/block/by-name/gz2                                  flags=backup=1;subpartitionof=/gz1
 
 # Modem
-/md1img                 emmc	 /dev/block/by-name/md1img                               flags=display="Modem";backup=1;flashimg=1
+/md1img                 emmc    /dev/block/by-name/md1img                               flags=display="Modem";backup=1;flashimg=1
 
 # System Control Processor (SCP)
 /scp1                   emmc    /dev/block/by-name/scp1                                 flags=display="Scp";backup=1
