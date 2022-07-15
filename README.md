@@ -1,5 +1,7 @@
 Common device configuration for the Unihertz Atom L and XL
 =================================================
+**Attention: Decryption is deactivated in this branch due to boot problems**
+
 This common device tree is intended for a special useage in a TWRP or similar environment.
 
 If you are looking for a device tree for the usage in a LineageOS or similar environment head over to https://github.com/ADeadTrousers/android_device_Unihertz_Atom_LXL.
