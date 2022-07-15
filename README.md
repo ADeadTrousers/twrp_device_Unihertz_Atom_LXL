@@ -1,6 +1,6 @@
 Common device configuration for the Unihertz Atom L and XL
 =================================================
-**Attention: Decryption is deactivated in this branch due to boot problems**
+**Attention: Expect boot problems as decryption is not working in this branch**
 
 This common device tree is intended for a special useage in a TWRP or similar environment.
 
