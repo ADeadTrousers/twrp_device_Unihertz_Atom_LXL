@@ -1,23 +1,44 @@
 on init
-    mkdir /mnt/vendor 0755 root root
-    mkdir /mnt/vendor/apd 0771 root root
-    mkdir /mnt/vendor/protect_f 0770 root root
-    mkdir /mnt/vendor/protect_s 0770 root root
-    mkdir /mnt/vendor/persist 0755 root root
-    mkdir /mnt/vendor/nvdata 0771 root root
-    mkdir /mnt/vendor/nvcfg 0771 root root
-    mount ext4 /dev/block/platform/bootdevice/by-name/apd /mnt/vendor/apd rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/protect1 /mnt/vendor/protect_f rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/protect2 /mnt/vendor/protect_s rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/nvdata /mnt/vendor/nvdata rw wait
-    mount ext4 /dev/block/platform/bootdevice/by-name/nvcfg /mnt/vendor/nvcfg rw wait
+    mkdir /mnt/vendor 0755 root system
+    mkdir /mnt/vendor/apd 0771 root system
+    mkdir /mnt/vendor/protect_f 0770 root system
+    mkdir /mnt/vendor/protect_s 0770 root system
+    mkdir /mnt/vendor/persist 0755 root system
+    mkdir /mnt/vendor/nvdata 0771 root system
+    mkdir /mnt/vendor/nvcfg 0771 root system
+    mount ext4 /dev/block/by-name/apd /mnt/vendor/apd rw wait
+    mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
+    mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
+    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw wait
+    mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
+    mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
+    start erase_para
     
-service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
+service erase_para /system/bin/dd if=/dev/zero of=/dev/block/by-name/para
     user root
     group root
     disabled
+    oneshot    
+    seclabel u:r:recovery:s0
+    
+service trustkernel.twrp /vendor/bin/trustkernel.twrp.sh
+    user root
+    group system
+    disabled
+    oneshot
     seclabel u:r:recovery:s0    
     
 on early-fs
     start trustkernel.twrp
+
+on post-fs
+    #restorecon_recursive /metadata
+    mkdir /metadata/vold
+    chmod 0700 /metadata/vold
+    mkdir /metadata/password_slots 0771 root system
+    mkdir /metadata/bootstat 0750 system log
+    mkdir /metadata/ota 0700 root system
+    mkdir /metadata/ota/snapshots 0700 root system
+
+    mkdir /metadata/apex 0700 root system
+    mkdir /metadata/apex/sessions 0700 root system

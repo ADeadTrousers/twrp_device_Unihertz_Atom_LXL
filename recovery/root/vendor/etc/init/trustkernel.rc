@@ -1,18 +1,17 @@
 on post-fs
 	write /proc/bootprof "tkcore: prepare system ta path"
-	# chown system system /vendor/app/t6
 
-	write /proc/bootprof "tkcore: prepare persist sfs"
 	# restorecon /mnt/vendor/persist
 	mkdir /mnt/vendor/persist/t6_twrp
-	# chown system system /mnt/vendor/persist/t6
-	# restorecon /mnt/vendor/persist/t6
-	
-	setprop vendor.trustkernel.fs.mode 3
-	setprop vendor.trustkernel.fs.state ready	
-	start teed
+	# chown system system /mnt/vendor/persist/t6_twrp
+	# restorecon /mnt/vendor/persist/t6_twrp
 
-on property:vendor.trustkernel.fs.state=ready
+	# restorecon /mnt/vendor/protect_f
+	mkdir /mnt/vendor/protect_f/tee_twrp
+	# chown system system /mnt/vendor/protect_f/tee
+	# restorecon /mnt/vendor/protect_f/tee
+
+on property:vendor.trustkernel.fs.state=prepare
 	write /proc/bootprof "tkcore: prepare basic"
 	mkdir /data/vendor/t6
 	# chown system system /data/vendor/t6
@@ -28,20 +27,22 @@ on property:vendor.trustkernel.fs.state=ready
 	# chown system system /data/vendor/t6/app
 	# restorecon /data/vendor/t6/app
 
+	setprop vendor.trustkernel.fs.state ready
+
 # For non-encrypted case
 on property:ro.crypto.state=unencrypted
 	setprop vendor.trustkernel.fs.mode 1
-	setprop vendor.trustkernel.fs.state ready
+	setprop vendor.trustkernel.fs.state prepare
 
 # For FDE/encrypted successfully
 on property:vold.decrypt=trigger_restart_framework
 	setprop vendor.trustkernel.fs.mode 2
-	setprop vendor.trustkernel.fs.state ready
+	setprop vendor.trustkernel.fs.state prepare
 
 # For FBE/encrypted successfully
 on property:ro.crypto.type=file && property:ro.crypto.state=encrypted
 	setprop vendor.trustkernel.fs.mode 3
-	setprop vendor.trustkernel.fs.state ready
+	setprop vendor.trustkernel.fs.state prepare
 
 on property:vendor.trustkernel.log.state=ready
 	write /proc/bootprof "tkcore: prepare log file"
@@ -49,22 +50,26 @@ on property:vendor.trustkernel.log.state=ready
 	setprop vendor.trustkernel.log.state enable
 
 on property:vendor.trustkernel.ready=true
-	start tee_check_keybox
+       start tee_check_keybox
 
 service teed /vendor/bin/teed \
     --datapath /data/vendor/t6/fs \
     --sptapath /data/vendor/t6/app \
     --systapath /vendor/app/t6 \
+    --rpmbdev /dev/mmcblk0rpmb \
+    --rpmbdev /dev/rpmb0 \
     --prot /mnt/vendor/persist/t6_twrp \
+    --prot /mnt/vendor/protect_f/tee_twrp \
     --logpath /data/vendor/t6/tkcore.log \
     --proprefix vendor.trustkernel
 	user root
-	group root
+	group system
 	disabled
 	seclabel u:r:recovery:s0
-    
+
 service tee_check_keybox /vendor/bin/tee_check_keybox
 	user root
-	group root
+	group system
 	disabled
+	oneshot
 	seclabel u:r:recovery:s0
