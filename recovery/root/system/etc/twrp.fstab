@@ -18,9 +18,9 @@
 /dtbo                   emmc    /dev/block/by-name/dtbo                                 flags=backup=1;display="Dtbo";flashimg=1
 /cache                  ext4    /dev/block/by-name/cache                                flags=backup=1;wipeingui;wipeduringfactoryreset
 /recovery               emmc    /dev/block/by-name/recovery                             flags=display="Recovery";backup=1;flashimg=1
-/persist                ext4    /dev/block/by-name/persist                              flags=backup=0;display="Persist"
+/mnt/vendor/persist     ext4    /dev/block/by-name/persist                              flags=backup=0;display="Persist"
 /persist_image          emmc    /dev/block/by-name/persist                              flags=backup=1;display="Persist Image";flashimg=1
-/vbmet                  emmc    /dev/block/by-name/vbmeta                               flags=display="Vbmeta";backup=1;flashimg=1
+/vbmeta                 emmc    /dev/block/by-name/vbmeta                               flags=display="Vbmeta";backup=1;flashimg=1
 /vbmeta_system          emmc    /dev/block/by-name/vbmeta_system                        flags=backup=1;display="Vbmeta System";flashimg=1
 /vbmeta_vendor          emmc    /dev/block/by-name/vbmeta_vendor                        flags=backup=1;display="Vbmeta Vendor";flashimg=1
 
@@ -33,16 +33,16 @@
 /seccfg                 emmc    /dev/block/by-name/seccfg                               flags=display="SecCfg";backup=1
 /boot_para              emmc    /dev/block/by-name/boot_para                            flags=display="Boot Para";backup=1
 /proinfo                emmc    /dev/block/by-name/proinfo                              flags=display="Proinfo";backup=1
-/apd                    emmc    /dev/block/by-name/apd            
+/mnt/vendor/apd         emmc    /dev/block/by-name/apd
 
 # Non-Volatile (RAM | DATA | CFG)
-/nvcfg                  ext4    /dev/block/by-name/nvcfg                                flags=display="NvCfg";backup=1
-/nvdata                 ext4    /dev/block/by-name/nvdata                               flags=display="NvData";backup=1
+/mnt/vendor/nvcfg       ext4    /dev/block/by-name/nvcfg                                flags=display="NvCfg";backup=1
+/mnt/vendor/nvdata      ext4    /dev/block/by-name/nvdata                               flags=display="NvData";backup=1
 /nvram                  emmc    /dev/block/by-name/nvram                                flags=display="NvRam";backup=1;flashimg=1
 
 # Subscriber Identification Module (SIM)
-/protect_f              ext4    /dev/block/by-name/protect1                             flags=display="Protect F";backup=1
-/protect_s              ext4    /dev/block/by-name/protect2                             flags=display="Protect S";backup=1;subpartitionof=/protect_f
+/mnt/vendor/protect_f   ext4    /dev/block/by-name/protect1                             flags=display="Protect F";backup=1
+/mnt/vendor/protect_s   ext4    /dev/block/by-name/protect2                             flags=display="Protect S";backup=1
 
 # Trusted Execution Environment (TEE) - trustzone
 /tee1                   emmc    /dev/block/by-name/tee1                                 flags=display="Tee";backup=1;flashimg=1
