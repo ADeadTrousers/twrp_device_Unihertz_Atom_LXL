@@ -13,7 +13,7 @@ on init
     mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
     mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
     start erase_para
-    
+
 service erase_para /system/bin/dd if=/dev/zero of=/dev/block/by-name/para
     user root
     group root
@@ -42,3 +42,20 @@ on post-fs
 
     mkdir /metadata/apex 0700 root system
     mkdir /metadata/apex/sessions 0700 root system
+
+service logger /system/bin/logcat -b all -D -f /external_sd/boot_logcat.txt
+    user root
+    group root system
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on post-fs-data
+    # Clear existing log and start the service
+    mount ext4 /dev/block/mmcblk0p1 /external_sd rw wait
+    rm /external_sd/boot_logcat.txt
+    start logger
+
+on property:sys.boot_completed=1
+    # Stop the logger service
+    stop logger
