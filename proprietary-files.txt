@@ -36,6 +36,12 @@ vendor/lib64/libteec.so:recovery/root/vendor/lib64/libteec.so
 vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so:recovery/root/vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so
 vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so:recovery/root/vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
 vendor/etc/vintf/manifest.xml:recovery/root/vendor/etc/vintf/manifest.xml
-vendor/etc/vintf/manifest.xml:recovery/root/vendor/etc/vintf/compatibility_matrix.xml
+vendor/etc/vintf/compatibility_matrix.xml:recovery/root/vendor/etc/vintf/compatibility_matrix.xml
 system/etc/vintf/manifest.xml:recovery/root/system/etc/vintf/manifest.xml
-system/etc/vintf/manifest.xml:recovery/root/system/etc/vintf/compatibility_matrix.xml
+system/etc/vintf/compatibility_matrix.1.xml:recovery/root/system/etc/vintf/compatibility_matrix.1.xml
+system/etc/vintf/compatibility_matrix.2.xml:recovery/root/system/etc/vintf/compatibility_matrix.2.xml
+system/etc/vintf/compatibility_matrix.3.xml:recovery/root/system/etc/vintf/compatibility_matrix.3.xml
+system/etc/vintf/compatibility_matrix.4.xml:recovery/root/system/etc/vintf/compatibility_matrix.4.xml
+system/etc/vintf/compatibility_matrix.5.xml:recovery/root/system/etc/vintf/compatibility_matrix.5.xml
+system/etc/vintf/compatibility_matrix.device.xml:recovery/root/system/etc/vintf/compatibility_matrix.device.xml
+system/etc/vintf/compatibility_matrix.legacy.xml:recovery/root/system/etc/vintf/compatibility_matrix.legacy.xml

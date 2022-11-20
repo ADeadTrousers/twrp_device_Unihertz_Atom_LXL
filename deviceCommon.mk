@@ -11,3 +11,5 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Another common config inclusion
 #$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
+
+PRODUCT_SHIPPING_API_LEVEL := 29
