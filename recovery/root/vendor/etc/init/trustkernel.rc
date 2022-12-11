@@ -1,32 +1,33 @@
 on post-fs
 	write /proc/bootprof "tkcore: prepare system ta path"
 
-	# restorecon /mnt/vendor/persist
+	restorecon /mnt/vendor/persist
 	mkdir /mnt/vendor/persist/t6_twrp
-	# chown system system /mnt/vendor/persist/t6_twrp
-	# restorecon /mnt/vendor/persist/t6_twrp
+	chown system system /mnt/vendor/persist/t6_twrp
+	restorecon /mnt/vendor/persist/t6_twrp
 
-	# restorecon /mnt/vendor/protect_f
+	restorecon /mnt/vendor/protect_f
 	mkdir /mnt/vendor/protect_f/tee_twrp
-	# chown system system /mnt/vendor/protect_f/tee
-	# restorecon /mnt/vendor/protect_f/tee
+	chown system system /mnt/vendor/protect_f/tee
+	restorecon /mnt/vendor/protect_f/tee
+
+	start teed
 
 on property:vendor.trustkernel.fs.state=prepare
 	write /proc/bootprof "tkcore: prepare basic"
 	mkdir /data/vendor/t6
-	# chown system system /data/vendor/t6
-	# restorecon /data/vendor/t6
+	chown system system /data/vendor/t6
+	restorecon /data/vendor/t6
 
 	write /proc/bootprof "tkcore: prepare sfs"
 	mkdir /data/vendor/t6/fs
-	# chown system system /data/vendor/t6/fs
-	# restorecon /data/vendor/t6/fs
+	chown system system /data/vendor/t6/fs
+	restorecon /data/vendor/t6/fs
 
 	write /proc/bootprof "tkcore: prepare service provider ta path"
 	mkdir /data/vendor/t6/app
-	# chown system system /data/vendor/t6/app
-	# restorecon /data/vendor/t6/app
-
+	chown system system /data/vendor/t6/app
+	restorecon /data/vendor/t6/app
 	setprop vendor.trustkernel.fs.state ready
 
 # For non-encrypted case
@@ -46,7 +47,7 @@ on property:ro.crypto.type=file && property:ro.crypto.state=encrypted
 
 on property:vendor.trustkernel.log.state=ready
 	write /proc/bootprof "tkcore: prepare log file"
-	# restorecon /data/vendor/t6/tkcore.log
+	restorecon /data/vendor/t6/tkcore.log
 	setprop vendor.trustkernel.log.state enable
 
 on property:vendor.trustkernel.ready=true
@@ -62,14 +63,17 @@ service teed /vendor/bin/teed \
     --prot /mnt/vendor/protect_f/tee_twrp \
     --logpath /data/vendor/t6/tkcore.log \
     --proprefix vendor.trustkernel
-	user root
+	capabilities SYS_RAWIO
+	user system
 	group system
+	class core
 	disabled
 	seclabel u:r:recovery:s0
 
 service tee_check_keybox /vendor/bin/tee_check_keybox
-	user root
-	group system
-	disabled
-	oneshot
-	seclabel u:r:recovery:s0
+       user system
+       group system
+       class main
+       disabled
+       oneshot
+       seclabel u:r:recovery:s0
