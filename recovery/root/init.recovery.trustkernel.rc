@@ -15,6 +15,8 @@ on fs
     mkdir /mnt/vendor/persist/t6_twrp 0755 system system
     mkdir /mnt/vendor/protect_f/tee_twrp 0755 system system
     exec u:r:recovery:s0 system -- /vendor/bin/trustkernel.twrp.sh
+    install_keyring
+    setprop crypto.ready 1
 
 service keystore /system/bin/keystore /tmp/misc/keystore
     user system
@@ -36,4 +38,3 @@ on post-fs-data
 on boot
     wait_for_prop vendor.trustkernel.ready true
     start vendor.gatekeeper-1-0
-#    start keymaster_attestation-1-1

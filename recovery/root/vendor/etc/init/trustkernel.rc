@@ -50,9 +50,6 @@ on property:vendor.trustkernel.log.state=ready
 	restorecon /data/vendor/t6/tkcore.log
 	setprop vendor.trustkernel.log.state enable
 
-on property:vendor.trustkernel.ready=true
-       start tee_check_keybox
-
 service teed /vendor/bin/teed \
     --datapath /data/vendor/t6/fs \
     --sptapath /data/vendor/t6/app \
@@ -69,11 +66,3 @@ service teed /vendor/bin/teed \
 	class core
 	disabled
 	seclabel u:r:recovery:s0
-
-service tee_check_keybox /vendor/bin/tee_check_keybox
-       user system
-       group system
-       class main
-       disabled
-       oneshot
-       seclabel u:r:recovery:s0
