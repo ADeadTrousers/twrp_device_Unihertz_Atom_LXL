@@ -19,14 +19,14 @@ vendor/bin/hw/android.hardware.keymaster@4.0-service.trustkernel:recovery/root/v
 vendor/lib64/libkeymaster4.so:recovery/root/vendor/lib64/libkeymaster4.so
 vendor/lib64/libkeymaster4support.so:recovery/root/vendor/lib64/libkeymaster4support.so
 # Keymaster Attestation (optional)
+#vendor/app/t6/b46325e6-5c90-8252-2eada8e32e5180d6.ta:recovery/root/vendor/app/t6/b46325e6-5c90-8252-2eada8e32e5180d6.ta
 #vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service:recovery/root/vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
 #vendor/lib64/hw/kmsetkey.trustkernel.so:recovery/root/vendor/lib64/hw/kmsetkey.trustkernel.so
 #vendor/lib64/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so:recovery/root/vendor/lib64/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so
 #vendor/lib64/libkmsetkey.so:recovery/root/vendor/lib64/libkmsetkey.so
 #vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so:recovery/root/vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so
 #vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so:recovery/root/vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
-# KPH/LPD (optional)
-#vendor/app/t6/b46325e6-5c90-8252-2eada8e32e5180d6.ta:recovery/root/vendor/app/t6/b46325e6-5c90-8252-2eada8e32e5180d6.ta
+# KPH/PLD (optional)
 #vendor/bin/kph:recovery/root/vendor/bin/kph
 #vendor/bin/pld:recovery/root/vendor/bin/pld
 #vendor/bin/tee_check_keybox:recovery/root/vendor/bin/tee_check_keybox

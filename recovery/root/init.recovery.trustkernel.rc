@@ -17,6 +17,8 @@ on fs
     exec u:r:recovery:s0 system -- /vendor/bin/trustkernel.twrp.sh
     install_keyring
     setprop crypto.ready 1
+    start hwservicemanager
+    start servicemanager
 
 service keystore /system/bin/keystore /tmp/misc/keystore
     user system
@@ -31,10 +33,21 @@ service keystore_auth /system/bin/keystore_auth
     oneshot
     seclabel u:r:recovery:s0
 
-on post-fs-data
-    wait_for_prop vendor.trustkernel.ready true
+on property:hwservicemanager.ready=true
     start vendor.keymaster-4-0-trustkernel
-    
-on boot
-    wait_for_prop vendor.trustkernel.ready true
     start vendor.gatekeeper-1-0
+
+on property:ro.crypto.state=unsupported
+    stop teed
+    stop vendor.keymaster-4-0-trustkernel
+    stop vendor.gatekeeper-1-0
+
+on property:ro.crypto.state=unencrypted
+    stop teed
+    stop vendor.keymaster-4-0-trustkernel
+    stop vendor.gatekeeper-1-0
+
+on property:twrp.decrypt.done=true
+    stop teed
+    stop vendor.keymaster-4-0-trustkernel
+    stop vendor.gatekeeper-1-0

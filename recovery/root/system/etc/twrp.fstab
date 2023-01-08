@@ -13,7 +13,7 @@
 /metadata               emmc    /dev/block/by-name/metadata                             flags=backup=1
 
 # Common partition
-/data                   ext4    /dev/block/by-name/userdata                             flags=fileencryption=aes-256-xts
+/data                   ext4    /dev/block/by-name/userdata                             flags=fileencryption=aes-256-xts:aes-256-cts:v1
 /boot                   emmc    /dev/block/by-name/boot                                 flags=display="Boot";backup=1
 /dtbo                   emmc    /dev/block/by-name/dtbo                                 flags=backup=1;display="Dtbo";flashimg=1
 /cache                  ext4    /dev/block/by-name/cache                                flags=backup=1;wipeingui;wipeduringfactoryreset

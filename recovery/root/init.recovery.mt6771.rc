@@ -16,3 +16,5 @@ on post-fs
     symlink /dev/block/by-name/preloader_a /dev/block/by-name/preloader_ufs_a
     symlink /dev/block/by-name/preloader_b /dev/block/by-name/preloader_ufs_b
 
+on boot
+    start health-hal-2-1
