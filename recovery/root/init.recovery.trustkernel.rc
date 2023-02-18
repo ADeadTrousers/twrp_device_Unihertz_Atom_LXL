@@ -17,8 +17,6 @@ on fs
     exec u:r:recovery:s0 system -- /vendor/bin/trustkernel.twrp.sh
     install_keyring
     setprop crypto.ready 1
-    start hwservicemanager
-    start servicemanager
 
 service keystore /system/bin/keystore /tmp/misc/keystore
     user system

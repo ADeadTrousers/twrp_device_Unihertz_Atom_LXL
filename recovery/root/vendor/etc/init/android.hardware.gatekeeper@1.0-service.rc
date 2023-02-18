@@ -3,5 +3,4 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
     class hal
     user system
     group system
-    disabled
     seclabel u:r:recovery:s0

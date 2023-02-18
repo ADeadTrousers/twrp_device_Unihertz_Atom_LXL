@@ -2,5 +2,4 @@ service vendor.keymaster-4-0-trustkernel /vendor/bin/hw/android.hardware.keymast
     class early_hal
     user system
     group system drmrpc
-    disabled
     seclabel u:r:recovery:s0
