@@ -9,8 +9,7 @@
 /product_image          emmc    /dev/block/mapper/product                               flags=backup=1;display="Product Image"
 
 # Core Partitions
-/md_udc                 emmc    /dev/block/by-name/md_udc                               flags=backup=1
-/metadata               emmc    /dev/block/by-name/metadata                             flags=backup=1
+/metadata               emmc    /dev/block/by-name/md_udc                               flags=backup=1
 
 # Common partition
 /data                   ext4    /dev/block/by-name/userdata                             flags=fileencryption=aes-256-xts:aes-256-cts:v1
@@ -28,7 +27,7 @@
 /bootloader             emmc    /dev/block/by-name/lk                                   flags=backup=1;display="Bootloader";flashimg=1
 /bootloader2            emmc    /dev/block/by-name/lk2                                  flags=backup=1;subpartitionof=/bootloader
 /logo                   emmc    /dev/block/by-name/logo                                 flags=display="Logo";backup=1;flashimg=1
-/misc                   emmc    /dev/block/by-name/para
+/misc                   emmc    /dev/block/by-name/para                                 flags=display="Misc"
 /expdb                  emmc    /dev/block/by-name/expdb                                flags=display="Expdb";backup=1
 /seccfg                 emmc    /dev/block/by-name/seccfg                               flags=display="SecCfg";backup=1
 /boot_para              emmc    /dev/block/by-name/boot_para                            flags=display="Boot Para";backup=1
@@ -46,7 +45,7 @@
 
 # Trusted Execution Environment (TEE) - trustzone
 /tee1                   emmc    /dev/block/by-name/tee1                                 flags=display="Tee";backup=1;flashimg=1
-/tee2                   emmc    /dev/block/by-name/tee2                                 flags=backup=1;subpartitionof=/tee1         
+/tee2                   emmc    /dev/block/by-name/tee2                                 flags=backup=1         
 
 # Factory Reset Protection (FRP)
 /persistent             emmc    /dev/block/by-name/frp                                  flags=display="Frp";backup=1
@@ -60,7 +59,7 @@
 
 # System Control Processor (SCP)
 /scp1                   emmc    /dev/block/by-name/scp1                                 flags=display="Scp";backup=1
-/scp2                   emmc    /dev/block/by-name/scp2                                 flags=backup=1;subpartitionof=/scp1         
+/scp2                   emmc    /dev/block/by-name/scp2                                 flags=backup=1         
 
 # Vision Processing Unit (VPU)
 /cam_vpu1               emmc    /dev/block/by-name/cam_vpu1                             flags=display="cam_vpu1";backup=1
