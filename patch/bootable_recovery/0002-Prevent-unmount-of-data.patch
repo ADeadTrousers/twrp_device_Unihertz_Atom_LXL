@@ -1,0 +1,26 @@
+From de567a893a916d0ac85418a5950fd51875c4028c Mon Sep 17 00:00:00 2001
+From: Matthias Leitl <a.dead.trousers@gmail.com>
+Date: Fri, 14 Apr 2023 19:57:58 +0200
+Subject: [PATCH] Prevent unmount of /data
+
+Change-Id: I3ae4eca6ae67832d98016f3031553534b1b28a2f
+---
+ partition.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/partition.cpp b/partition.cpp
+index 294046b5..f9d63fdc 100755
+--- a/partition.cpp
++++ b/partition.cpp
+@@ -1236,7 +1236,7 @@ void TWPartition::Setup_Data_Media() {
+ 			Storage_Path = Mount_Point + "/media/0";
+ 			Symlink_Path = Storage_Path;
+ 			DataManager::SetValue(TW_INTERNAL_PATH, Mount_Point + "/media/0");
+-			UnMount(true);
++			//UnMount(true);
+ 		}
+ 		DataManager::SetValue("tw_has_internal", 1);
+ 		DataManager::SetValue("tw_has_data_media", 1);
+-- 
+2.34.1
+
