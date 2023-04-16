@@ -18,17 +18,17 @@ on fs
     install_keyring
     setprop crypto.ready 1
 
-service keystore /system/bin/keystore /tmp/misc/keystore
+service keystore_auth /system/bin/keystore_auth
+    oneshot
     user system
-    group system drmrpc readproc
+    group root
     disabled
     seclabel u:r:recovery:s0
-    
-service keystore_auth /system/bin/keystore_auth
-    user system
-    group system
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
     disabled
-    oneshot
     seclabel u:r:recovery:s0
 
 on property:hwservicemanager.ready=true
