@@ -9,18 +9,17 @@
 /product_image          emmc    /dev/block/mapper/product                               flags=backup=1;display="Product Image"
 
 # Core Partitions
-/md_udc                 emmc    /dev/block/by-name/md_udc                               flags=backup=1
-/metadata               emmc    /dev/block/by-name/metadata                             flags=backup=1
+/metadata               emmc    /dev/block/by-name/md_udc                               flags=backup=1
 
 # Common partition
-/data                   ext4    /dev/block/by-name/userdata                             flags=fileencryption=aes-256-xts
+/data                   ext4    /dev/block/by-name/userdata                             flags=display="Data";backup=1;fileencryption=aes-256-xts:aes-256-cts:v1
 /boot                   emmc    /dev/block/by-name/boot                                 flags=display="Boot";backup=1
 /dtbo                   emmc    /dev/block/by-name/dtbo                                 flags=backup=1;display="Dtbo";flashimg=1
 /cache                  ext4    /dev/block/by-name/cache                                flags=backup=1;wipeingui;wipeduringfactoryreset
 /recovery               emmc    /dev/block/by-name/recovery                             flags=display="Recovery";backup=1;flashimg=1
-/persist                ext4    /dev/block/by-name/persist                              flags=backup=0;display="Persist"
+/mnt/vendor/persist     ext4    /dev/block/by-name/persist                              flags=backup=0;display="Persist"
 /persist_image          emmc    /dev/block/by-name/persist                              flags=backup=1;display="Persist Image";flashimg=1
-/vbmet                  emmc    /dev/block/by-name/vbmeta                               flags=display="Vbmeta";backup=1;flashimg=1
+/vbmeta                 emmc    /dev/block/by-name/vbmeta                               flags=display="Vbmeta";backup=1;flashimg=1
 /vbmeta_system          emmc    /dev/block/by-name/vbmeta_system                        flags=backup=1;display="Vbmeta System";flashimg=1
 /vbmeta_vendor          emmc    /dev/block/by-name/vbmeta_vendor                        flags=backup=1;display="Vbmeta Vendor";flashimg=1
 
@@ -28,25 +27,25 @@
 /bootloader             emmc    /dev/block/by-name/lk                                   flags=backup=1;display="Bootloader";flashimg=1
 /bootloader2            emmc    /dev/block/by-name/lk2                                  flags=backup=1;subpartitionof=/bootloader
 /logo                   emmc    /dev/block/by-name/logo                                 flags=display="Logo";backup=1;flashimg=1
-/misc                   emmc    /dev/block/by-name/para
+/misc                   emmc    /dev/block/by-name/para                                 flags=display="Misc"
 /expdb                  emmc    /dev/block/by-name/expdb                                flags=display="Expdb";backup=1
 /seccfg                 emmc    /dev/block/by-name/seccfg                               flags=display="SecCfg";backup=1
 /boot_para              emmc    /dev/block/by-name/boot_para                            flags=display="Boot Para";backup=1
 /proinfo                emmc    /dev/block/by-name/proinfo                              flags=display="Proinfo";backup=1
-/apd                    emmc    /dev/block/by-name/apd            
+/mnt/vendor/apd         emmc    /dev/block/by-name/apd
 
 # Non-Volatile (RAM | DATA | CFG)
-/nvcfg                  ext4    /dev/block/by-name/nvcfg                                flags=display="NvCfg";backup=1
-/nvdata                 ext4    /dev/block/by-name/nvdata                               flags=display="NvData";backup=1
+/mnt/vendor/nvcfg       ext4    /dev/block/by-name/nvcfg                                flags=display="NvCfg";backup=1
+/mnt/vendor/nvdata      ext4    /dev/block/by-name/nvdata                               flags=display="NvData";backup=1
 /nvram                  emmc    /dev/block/by-name/nvram                                flags=display="NvRam";backup=1;flashimg=1
 
 # Subscriber Identification Module (SIM)
-/protect_f              ext4    /dev/block/by-name/protect1                             flags=display="Protect F";backup=1
-/protect_s              ext4    /dev/block/by-name/protect2                             flags=display="Protect S";backup=1;subpartitionof=/protect_f
+/mnt/vendor/protect_f   ext4    /dev/block/by-name/protect1                             flags=display="Protect F";backup=1
+/mnt/vendor/protect_s   ext4    /dev/block/by-name/protect2                             flags=display="Protect S";backup=1
 
 # Trusted Execution Environment (TEE) - trustzone
 /tee1                   emmc    /dev/block/by-name/tee1                                 flags=display="Tee";backup=1;flashimg=1
-/tee2                   emmc    /dev/block/by-name/tee2                                 flags=backup=1;subpartitionof=/tee1         
+/tee2                   emmc    /dev/block/by-name/tee2                                 flags=backup=1         
 
 # Factory Reset Protection (FRP)
 /persistent             emmc    /dev/block/by-name/frp                                  flags=display="Frp";backup=1
@@ -60,7 +59,7 @@
 
 # System Control Processor (SCP)
 /scp1                   emmc    /dev/block/by-name/scp1                                 flags=display="Scp";backup=1
-/scp2                   emmc    /dev/block/by-name/scp2                                 flags=backup=1;subpartitionof=/scp1         
+/scp2                   emmc    /dev/block/by-name/scp2                                 flags=backup=1         
 
 # Vision Processing Unit (VPU)
 /cam_vpu1               emmc    /dev/block/by-name/cam_vpu1                             flags=display="cam_vpu1";backup=1
