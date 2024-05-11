@@ -6,12 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "vendor/mediatek/proprietary/hardware/fstab/mt6771/fstab.in.mt6771" 2
 # 149 "vendor/mediatek/proprietary/hardware/fstab/mt6771/fstab.in.mt6771"
-system /system ext4 ro wait,logical,first_stage_mount
+system /system ext4 rw wait,logical,first_stage_mount
 
-vendor /vendor ext4 ro wait,logical,first_stage_mount
+vendor /vendor ext4 rw wait,logical,first_stage_mount
 
 
-product /product ext4 ro wait,logical,first_stage_mount
+product /product ext4 rw wait,logical,first_stage_mount
 
 
 
